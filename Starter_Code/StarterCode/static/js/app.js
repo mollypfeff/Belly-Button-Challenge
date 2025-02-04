@@ -3,7 +3,7 @@ let url = "https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json"; 
 //function that populates the metadata
 function demoInfo(sample)
 {
-    console.log(sample);
+    //console.log(sample); tested data output here
 
         //load the data from the URL 
     d3.json(url).then(data => {
@@ -20,7 +20,7 @@ function demoInfo(sample)
         //clear the metadata out
         d3.select("#sample-metadata").html(""); //clears out the HTML, so that one sample's data is shown at a time
 
-        // use Object.entries to get the value-key pairs
+        // use Object.entries to get the key-value pairs
         Object.entries(resultData).forEach(([key, value]) =>{
             //add to the sample data/demographics section
             d3.select("#sample-metadata"). append("h5").text(`${key}: ${value}`)
@@ -36,7 +36,7 @@ function buildBarChart(sample)
     d3.json(url).then(data => {
     //grab  all of the samples
     let sampleData = data.samples;
-    console.log(sampleData);
+    //console.log(sampleData); tested data output here
      
 
     //filter based on the value of the sample (should return 1 result in an array based on the dataset)
@@ -53,7 +53,7 @@ function buildBarChart(sample)
 
 
     //build the bar chart
-    //get the y tickmarks, x values, and text labels
+    //get the y tickmarks, x values, and text labels, slice to get the top 10 results
     let yticks = otu_ids.slice(0, 10).map(id => `OTU ${id}`);
     let xvalues = sample_values.slice(0, 10);
     let textlabels = otu_labels.slice(0, 10);
@@ -82,7 +82,7 @@ function buildBubbleChart(sample)
     d3.json(url).then(data => {
         //grab  all of the samples
         let sampleData = data.samples;
-        console.log(sampleData);
+        //console.log(sampleData); tested data output here
          
     
         //filter based on the value of the sample (should return 1 result in an array based on the dataset)
@@ -130,11 +130,11 @@ function init(){
     //load the data from the URL 
 d3.json(url).then(data => 
     {
-        console.log(data);
+        //console.log(data); tested data output here
 
         //get the names key using the d3.json
         let sampleNames = data.names;
-        console.log(sampleNames);
+        //console.log(sampleNames); tested data output here
 
         //to access the dropdown, can use D3 to select the select tag with the "#selDataset" id
         let selector = d3.select("#selDataset");
